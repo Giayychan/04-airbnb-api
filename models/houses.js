@@ -1,16 +1,11 @@
 const mongoose = require('mongoose')
+const ObjectId = mongoose.Schema.Types.ObjectId
 
 module.exports = mongoose.model('houses', {
 	amenities: [
 		{
-			name: {
-				type: String,
-				required: [true, 'name is required']
-			},
-			icon: {
-				type: String,
-				required: [true, 'icon is required']
-			}
+			type: ObjectId,
+			ref: 'amenities'
 		}
 	],
 	plus: {
@@ -26,11 +21,9 @@ module.exports = mongoose.model('houses', {
 		type: String,
 		required: [true, 'description is required']
 	},
-	type: {
-		name: {
-			type: String,
-			required: [true, 'name is required']
-		}
+	types: {
+		type: ObjectId,
+		ref: 'types'
 	},
 	city: {
 		type: String,
@@ -58,61 +51,13 @@ module.exports = mongoose.model('houses', {
 	},
 	rating: Number,
 	host: {
-		name: {
-			type: String,
-			required: [true, 'name is required']
-		},
-		email: {
-			type: String,
-			required: [true, 'email is required']
-		},
-		avatar: {
-			type: String
-		},
-		location: {
-			type: String
-		},
-		password: {
-			type: String,
-			required: [true, 'password is required']
-		}
+		type: ObjectId,
+		ref: 'users'
 	},
 	lat: {
 		type: Number
 	},
 	lng: {
 		type: Number
-	},
-	reviews: [
-		{
-			author: {
-				name: {
-					type: String,
-					required: [true, 'name is required']
-				},
-				email: {
-					type: String,
-					required: [true, 'email is required']
-				},
-				avatar: {
-					type: String
-				},
-				location: {
-					type: String
-				},
-				password: {
-					type: String,
-					required: [true, 'password is required']
-				}
-			},
-			rating: {
-				type: Number,
-				default: 0
-			},
-			content: {
-				type: String,
-				required: [true, 'content is required']
-			}
-		}
-	]
+	}
 })

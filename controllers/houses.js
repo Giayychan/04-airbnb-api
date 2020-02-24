@@ -12,6 +12,14 @@ router.get('/', (req, res) => {
 		})
 })
 
-// Create route for single house
+router.get('/:id', (req, res) => {
+	Houses.findById(req.params.id)
+		.then(house => {
+			res.send(house)
+		})
+		.catch(err => {
+			res.send(err)
+		})
+})
 
 module.exports = router
