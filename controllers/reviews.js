@@ -3,7 +3,7 @@ require('../models/users')
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
-	Reviews.find({ house: req.query.houseID })
+	Reviews.find(req.query)
 		.populate('author')
 		.then(reviews => {
 			res.send(reviews)

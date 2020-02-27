@@ -8,11 +8,6 @@ router.get('/', (req, res) => {
 		.populate('type')
 		.lean()
 		.then(houses => {
-			// Set first of images as 'image'
-			// houses.map((house, i) => {
-			// 	house[i].firstImage = house[i].images[0]
-			// 	delete house[i].images
-			// })
 			res.send(houses)
 		})
 		.catch(err => {
@@ -22,7 +17,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
 	Houses.findById(req.params.id)
-		.populate('host type')
+		.populate('host type amenities')
 		.then(house => {
 			res.send(house)
 		})
