@@ -9,10 +9,10 @@ router.get('/', (req, res) => {
 		.lean()
 		.then(houses => {
 			// Set first of images as 'image'
-			houses.map((house, i) => {
-				house[i].firstImage = house[i].images[0]
-				delete house[i].images
-			})
+			// houses.map((house, i) => {
+			// 	house[i].firstImage = house[i].images[0]
+			// 	delete house[i].images
+			// })
 			res.send(houses)
 		})
 		.catch(err => {
