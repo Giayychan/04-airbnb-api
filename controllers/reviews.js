@@ -4,7 +4,7 @@ const router = require('express').Router()
 
 router.get('/', (req, res) => {
 	Reviews.find({})
-		.populate('author house')
+		.populate('author')
 		.then(reviews => {
 			res.send(reviews)
 		})
