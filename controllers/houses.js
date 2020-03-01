@@ -3,7 +3,7 @@ require('../models/types')
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
-	Houses.find({})
+	Houses.find(req.query)
 		.select('title type bedrooms city region price rating images lat lng')
 		.populate('type amenities')
 		.lean()
