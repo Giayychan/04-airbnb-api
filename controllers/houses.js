@@ -5,7 +5,7 @@ const router = require('express').Router()
 router.get('/', (req, res) => {
 	Houses.find({})
 		.select('title type bedrooms city region price rating images lat lng')
-		.populate('type')
+		.populate('type amenities')
 		.lean()
 		.then(houses => {
 			res.send(houses)
